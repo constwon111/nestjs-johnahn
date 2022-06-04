@@ -26,6 +26,7 @@ export class BoardsService {
   //     this.boards.push(board);
   //     return board;
   //   }
+  //
   async createBoard(createBoardDto: createBoardDto): Promise<Board> {
     const { title, description } = createBoardDto;
     const board = this.boardRepository.create({
