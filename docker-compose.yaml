@@ -1,0 +1,13 @@
+version: '3'
+services:
+  server:
+    container_name: nestjs-server
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - '3000:3000'
+    volumes:
+      - /app/node_modules
+      - ./:/app
+    stdin_open: true

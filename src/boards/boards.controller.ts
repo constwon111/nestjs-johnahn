@@ -17,6 +17,7 @@ import { BoardStatusValidationPipe } from './pipes/board-status-validation.pipe'
 @Controller('boards')
 export class BoardsController {
   constructor(private boardService: BoardsService) {}
+  // nestjs
   //   @Get('/')
   //   getAllBoard(): Board[] {
   //     return this.boardService.getAllBoards();

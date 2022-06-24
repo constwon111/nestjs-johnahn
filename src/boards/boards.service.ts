@@ -12,6 +12,7 @@ export class BoardsService {
     @InjectRepository(BoardRepository)
     private boardRepository: BoardRepository,
   ) {}
+  //
 
   //   getAllBoards(): Board[] {
   //     return this.boards;
@@ -28,7 +29,7 @@ export class BoardsService {
   //     return board;
   //   }
   //
-  
+
   async createBoard(createBoardDto: createBoardDto): Promise<Board> {
     const { title, description } = createBoardDto;
     const board = this.boardRepository.create({
@@ -48,6 +49,7 @@ export class BoardsService {
     }
     return found;
   }
+
   //   getBoardById(id: string): Board {
   //     const found = this.boards.find((board) => board.id === id);
   //     if (!found) {
