@@ -23,6 +23,10 @@ export class BoardsController {
   //   getAllBoard(): Board[] {
   //     return this.boardService.getAllBoards();
   //   }
+  @Get()
+  getAllBoard(): Promise<Board[]> {
+    return this.boardService.getAllBoards();
+  }
   //   @Post()
   //   @UsePipes(ValidationPipe)
   //   createBoard(@Body() createBoardDto: createBoardDto): Board {
