@@ -50,6 +50,15 @@ export class BoardsService {
     return found;
   }
 
+  async deleteBoard(id: number): Promise<void> {
+    const result = await this.boardRepository.delete(id);
+    if (result.affected === 0) {
+      throw new NotFoundException(`Can't find Board with id ${id}`);
+    }
+
+    console.log('result', result);
+  }
+
   //   getBoardById(id: string): Board {
   //     const found = this.boards.find((board) => board.id === id);
   //     if (!found) {
@@ -62,6 +71,15 @@ export class BoardsService {
   //     this.boards = this.boards.filter((board) => board.id !== found.id);
   //     // return found;
   //   }
+
+  async updateBoardStatus(id: string, status: BoardStatus): Promise<Board> {
+    const board = await this.getBoardById(id);
+
+    board.status = status;
+    await this.boardRepository.save(board);
+
+    return board;
+  }
   //   updateBoardStatus(id: string, status: BoardStatus): Board {
   //     const board = this.getBoardById(id);
   //     board.status = status;
