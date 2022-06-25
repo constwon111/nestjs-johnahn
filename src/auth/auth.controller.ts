@@ -10,6 +10,8 @@ import { AuthCredentialsDto } from './dto/auth-credential.dto';
 import { Req } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Request } from '@nestjs/common';
+import { GetUser } from './get-user.decorator';
+import { User } from './user.entity';
 
 @Controller('auth')
 export class AuthController {
@@ -31,8 +33,16 @@ export class AuthController {
 
   @Post('/test')
   @UseGuards(AuthGuard())
-  test(@Req() req: Request) {
-    // console.log('req', req);
-    console.log(req.headers);
+  test(@GetUser() user: User) {
+    console.log('user', user);
   }
 }
+
+// createParamater 을 안썼을때
+//   @Post('/test')
+//   @UseGuards(AuthGuard())
+//   test(@Req() req: Request) {
+//     // console.log('req', req);
+//     console.log(req.headers);
+//   }
+// }
